@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="addForm">
+    <form name="frm" action="../index.html" method="post" onsubmit="saveFnc(event)">
+      ID : <input type="text" name="uid" id="userid" value="101">
+      NAME : <input type="text" name="uname" id="userName" value="홍길동">
+      SCORE : <input type="text" name="uscore" id="userScore" value="80">
+      AGE : <input type="text" name="uage" id="userAge" value="19">
+      <input type="submit" value="저장">
+    </form>
+  </div>
+
+  <div id="show">
+    <table border="1">
+      <htead>
+        <tr>
+          <th>아이디</th>
+          <th>이름</th>
+          <th>점수</th>
+          <th>나이</th>
+        </tr>
+        </thead>
+        <tbody id="body">
+
+        </tbody>
+    </table>
+  </div>
+
+  <script>
+    //순번으로 해도되고, 등..몰라서
+    //  console.log(document.forms['frm'].elements['uid'].value);
+    function saveFnc(e) {
+      (document.forms);
+      e.preventDefault(); // 기본 기능을 차단
+      let id = console.log(document.forms['frm'].elements['uid'].value);
+      let name = console.log(document.forms['frm'].elements['uid'].value);
+      let scor = console.log(document.forms['frm'].elements['uid'].value);
+      let age = console.log(document.forms['frm'].elements['uid'].value);
+
+      let person = {}
+      person.id = id;
+      person.name = name;
+      person.score =score;
+      person.age = age
+      
+      document.getElementById('body').appendChild(person)
+
+    }
+
+    function makeTr(obj) {
+      let tr = document.createElement('tr')
+      let td = document.createElement('td')
+      td.innerHTML=id;
+      tr.appendChild(td)
+    }
+  </script>
+</body>
+
+</html>

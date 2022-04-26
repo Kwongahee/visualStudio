@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded',function(){
     let name = document.getElementById('userName').value
     let age = document.getElementById('userAge').value
   
+    if(!name) {
+      alert('이름을 입력하세요..');
+      return; // function 종료 > return
+    }
+    if(!age){
+      alert('나이를 입력하세요..')
+      return;
+    }
     //태그만들때 createElement
     let span1 = document.createElement('span'); //<span>${name}</span>
     span1.innerHTML = name;

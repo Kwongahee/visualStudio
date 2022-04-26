@@ -1,4 +1,4 @@
-// function/basic.js
+ // function/basic.js
 //1.함수는 함수선언식으로 정의.
 function sum(num1, num2) {
   console.log(num1, num2);
