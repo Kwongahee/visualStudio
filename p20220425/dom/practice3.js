@@ -153,13 +153,12 @@ function makeTr(val) {
 
   let btn = document.createElement('button')// <button>삭제</button>
   btn.innerHTML = '삭제' ;
-  let td = document.createElement('td')
-  // btn.addEventListener('click', deleteCallBack){
+  btn.addEventListener('click', deleteCallBack)
     // console.log(this) //이벤트를 당하는 대상..> this : event.target
     // this.parentElement.parentElement.remove();
     //   evnt.target.parentElement.parentElement.remove() //중요!!!!!!
   // });
-  let id = document.createElement('td')
+  let td = document.createElement('td')
   td.appendChild(btn)
   tr.appendChild(td);
 
