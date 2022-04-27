@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #show{
+      width: 350px;
+      height: 300px;
+      background-color: yellow;
+    }
+    span{
+      display: inline-block;
+      width: 100px;
+      height: 20px;
+      margin: 2px;
+      padding: 2px;
+      border: 1px red solid;
+    }
+    /* show > span의 첫번째 요소 */
+    #show>span:nth-child(1){
+      color:blue;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" name="" id="userVal">
+  <div id="show"> </div>
+<script>
+  let data = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quae similique cumque mollitia fuga saepe alias nemo id autem porro, sunt aliquid, dolorem veritatis esse temporibus numquam consequuntur, accusantium vero?`
+  let dataAry = data.split(' ');
+
+  let attach = document.getElementById('show');
+  dataAry.forEach(function(elem){
+    let span = document.createElement('span');
+    span.innerHTML = elem;
+    attach.appendChild(span);
+  });
+
+  let user = document.getElementById('userVal');
+  user.addEventListener('change',function(){
+    //change 이벤트 등록
+    let uval = user.value;
+
+  //  // 교수님이 한 것.
+  //   let spans = document.querySelectorAll('span') //span 요소를 다 가져옴
+  //   //가져온 span 요소를 각각 사용자 값과 비교
+  //   spans.forEach(function (elem,idx){
+  //     if(elem.innerHTML==user.value){
+  //       elem.style.display='none';
+  //     }
+  //   })
+
+
+    dataAry.forEach(function(elem, idx){
+      //유저가 입력한 값이 uval과 같다면
+      if(elem == uval) {
+        //인덱스값을 불러와서 none으로
+        document.querySelector(`#show>span:nth-child(${idx+1})`).style.display='none';
+        user.value = ' '
+      } 
+    }
+    );
+
+    // console.log(spans);
+    //document.querySelector('#show>span:nth-child(1)').style.display='none';
+    //사용이 끝이나면 value 속성 초기화
+    user.value = ''
+  });
+</script>
+
+</body>
+</html>
