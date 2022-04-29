@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>평가도구</title>
+</head>
+
+<body>
+    <div id="Frm">
+        <form action="" name="myFrm">
+            사용자 아이디 <input type="text" name="" id="uid"><br>
+            사용자 이름 <input type="text" name="" id="uname"><br>
+            이메일 <input type="email" name="" id="email"><br>
+            전화번호 <input type="tel" name="" id="phone"><br>
+            생년월일 <input type="date" name="" id="birth"><br>
+            <input id="add" type="submit" value="등록">
+            <input type="button" value="삭제">
+        </form>
+
+    </div>
+    <div id="list">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>선택 </th>
+                    <th>아이디</th>
+                    <th>이름</th>
+                    <th>이메일</th>
+                    <th>전화번호</th>
+                    <th>생년월일</th>
+                </tr>
+            </thead>
+            <tbody id="listbody">
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let data = [{
+                uid: 'user1',
+                uname: '홍길동',
+                email: 'hong@email.com',
+                phone: '011-9870-1231',
+                birth: '1994-03-13',
+            },
+            {
+                uid: 'user2',
+                uname: '홍길동',
+                email: 'hong@email.com',
+                phone: '011-9870-1231',
+                birth: '1994-03-13'
+            }
+        ];
+
+        //list에 tbody담기
+        let list = document.getElementById('listbody')
+
+
+
+        data.forEach(function (elem, idx, ary) {
+            console.log(elem, idx, ary);
+            list.appendChild(makeTr(elem))
+
+            return elem;
+        });
+
+
+
+        //tr한줄씩 가져오기
+        function makeTr(user) {
+            let tr = document.createElement('tr');
+            tr.setAttribute('id', user.uid);
+
+            for (let field in user) {
+                let td = document.createElement('td');
+                td.innerHTML = user[field];
+                tr.appendChild(td);
+
+                console.log(field);
+            }
+        }
+
+
+
+        let addbtn = document.querySelector('input[type="submit"]')
+        addbtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            let uid = document.getElementById('uid').value;
+            let uname = document.getElementById('uname').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            let birth = document.getElementById('birth').value;
+
+            let obj = {}
+            obj.userid = uid
+            obj.username = uname
+            obj.mail = email
+            obj.PhoneNo = phone
+            obj.date = birth
+
+
+            if (!(uid && uname && email && phone && birth)) {
+                alert('값을 입력하세요.')
+                return
+            }
+
+            console.log(obj)
+            list.appendChild(makeTr(obj))
+
+        })
+    </script>
+
+</body>
+
+</html>

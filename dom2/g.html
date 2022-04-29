@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+
+</head>
+
+<body>
+  <button id='Delbtn'>선택삭제</button>
+  <button id='All'>전체선택</button>
+  <table border="1">
+    <tr>
+      <td><input type='checkbox'></td>
+      <td>Gahee</td>
+    </tr>
+    <tr>
+      <td><input type='checkbox'></td>
+      <td>Heega</td>
+    </tr>
+    <tr>
+      <td><input type='checkbox'></td>
+      <td>GAHEE</td>
+    </tr>
+  </table>
+  <script>
+    //선택삭제
+    let delBtn = document.getElementById('Delbtn');
+    delBtn.addEventListener('click', function () {
+      let allTr = document.querySelectorAll('tr'); //테이블하위에 있는 tr 다 가져오도록
+      allTr.forEach(function (tr) {
+        if (tr.firstElementChild.firstElementChild.checked == true) {
+          tr.remove();
+        }
+      })
+    })
+
+    //전체선택
+    let all = document.getElementById('Allbtn');
+    All.addEventListener('click', function () {
+      let allTr = document.querySelectorAll('tr');
+      allTr.forEach(function (tr) {
+        tr.firstElementChild.firstElementChild.checked = true
+      })
+    })
+
+    //전체삭제
+  </script>
+</body>
+
+</html>
