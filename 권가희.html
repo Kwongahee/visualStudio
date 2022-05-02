@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>평가도구</title>
+</head>
+
+<body>
+    <div id="Frm">
+        <form action="" name="myFrm">
+            사용자 아이디 <input type="text" name="" id="uid" value="user1004"><br>
+            사용자 이름 <input type="text" name="" id="uname" value="박지쏭"><br>
+            이메일 <input type="email" name="" id="email" value="jisung@angel.com"><br>
+            전화번호 <input type="tel" name="" id="phone" value="010-1004-1004"><br>
+            생년월일 <input type="date" name="" id="birth" value="2002-02-05"><br>
+            <input id="add" type="submit" value="등록">
+            <input id="del" type="button" value="삭제">
+        </form>
+
+    </div>
+    <div id="list">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>순번</th>
+                    <th>선택 </th>
+                    <th>아이디</th>
+                    <th>이름</th>
+                    <th>이메일</th>
+                    <th>전화번호</th>
+                    <th>생년월일</th>
+                </tr>
+            </thead>
+            <tbody id="listbody">
+
+            </tbody>
+        </table>
+    </div>
+    <!-- js코드 짜기 -->
+    <script>
+        let data = [{
+                uid: 'user1',
+                uname: '홍길동',
+                email: 'hong@email.com',
+                phone: '010-1234-1234',
+                birth: '97-10-10'
+            },
+            {
+                uid: 'user2',
+                uname: '박지성',
+                email: 'jisung@email.com',
+                phone: '010-1234-1234',
+                birth: '02-02-05'
+            },
+            {
+                uid: 'user3',
+                uname: '권오이',
+                email: 'oe@email.com',
+                phone: '010-1234-1234',
+                birth: '04-01-06'
+            },
+            {
+                uid: 'user4',
+                uname: '권가지',
+                email: 'eggplant@email.com',
+                phone: '010-1004-1234',
+                birth: '98-05-19'
+            }
+        ]
+       
+        let list = document.getElementById('listbody')
+        data.forEach(function (elem, idx, ary) {
+            list.appendChild(makeTr(elem))
+        
+        })
+
+    
+
+        //makeTr
+        function makeTr(user, idx) {
+            let tr = document.createElement('tr');
+            tr.setAttribute('id', `u_${user.uid}`);
+
+            
+
+            //input(checkbox) 만들기
+            let thead = document.querySelector('thead');
+            let td = document.createElement('td');
+            let input = document.createElement('input');
+            input.setAttribute('type', 'checkbox')
+
+
+            td.appendChild(input);
+            tr.appendChild(td);
+            thead.appendChild(tr);
+
+            //순번만들기    
+            for (let i =0; i<user.length; i++) {
+                let td = document.createElement('td');
+                td.innerHTML = user[field];
+                tr.appendChild(td);
+                console.log(tr)
+
+            }
+
+
+
+            for (let field in user) {
+
+                let td = document.createElement('td');
+                td.innerHTML = user[field];
+                tr.appendChild(td);
+                // console.log(tr)
+            }
+
+            return tr;
+
+        } //end of makeTr
+
+
+
+
+        let submitBtn = document.getElementById('add')
+        submitBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            let uno = document.getElementById('uid').value;
+            let uname = document.getElementById('uname').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            let birth = document.getElementById('birth').value;
+
+            let obj = {
+                userNo: uno,
+                userName: uname,
+                email: email,
+                phone: phone,
+                birth: birth
+            }
+
+
+
+
+            if (!(uno && uname && email && phone && birth)) {
+                alert('값을 입력하삼')
+                return
+            }
+
+            // console.log(obj)
+            list.appendChild(makeTr(obj))
+
+        })
+
+
+        let delBtn = document.getElementById('del')
+        delBtn.addEventListener('click', function (e) {
+
+            let allTr = document.querySelectorAll('#listbody > tr')
+
+            allTr.forEach(function (val) {
+
+                if (val.firstElementChild.firstElementChild.checked == true) {
+                    val.remove();
+                }
+
+            })
+
+        })
+    </script>
+</body>
+
+</html>
